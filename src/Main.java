@@ -63,5 +63,19 @@ public class Main {
 
     private static void reducingBalance() {
         System.out.println("Reducing Balance");
+        System.out.print("Acquisition Cost -> ");
+        acquisitionCost = scan.nextInt();
+        System.out.print("Residual Value -> ");
+        residualValue = scan.nextDouble();
+        System.out.print("Years -> ");
+        years = scan.nextInt();
+
+        double percentage = (Math.pow(residualValue / acquisitionCost, 1.0 / years));
+        System.out.println((double) Math.round (percentage * 100) / 100);
+        for (int i = 1; i <= years; i++){
+            acquisitionCost -= (acquisitionCost * (1 - percentage));
+            System.out.println(acquisitionCost);
+        }
+
     }
 }
