@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -6,6 +7,8 @@ public class Main {
     private static int acquisitionCost;
     private static double residualValue;
     private static int years;
+
+    static DecimalFormat df = new DecimalFormat("#.####");
 
     public static void main(String[] args) {
 
@@ -70,10 +73,11 @@ public class Main {
         System.out.print("Years -> ");
         years = scan.nextInt();
 
-        double percentage = (Math.pow(residualValue / acquisitionCost, 1.0 / years));
-        System.out.println((double) Math.round (percentage * 100) / 100);
+        double percentageCalc = 1 - (Math.pow(residualValue / acquisitionCost, 1.0 / years));
+        String format = df.format(percentageCalc);
+        System.out.println(Float.parseFloat(format));
         for (int i = 1; i <= years; i++){
-            acquisitionCost -= (acquisitionCost * (1 - percentage));
+            acquisitionCost -= (acquisitionCost * Float.parseFloat(format));
             System.out.println(acquisitionCost);
         }
 
