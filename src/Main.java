@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner scan = new Scanner(System.in);
-    private static double acquisitionCost;
+    private static int acquisitionCost;
     private static double residualValue;
     private static int years;
 
@@ -23,7 +23,7 @@ public class Main {
     private static void straightLine() {
         System.out.println("Straight Line Depreciation");
         System.out.print("Acquisition Cost -> ");
-        acquisitionCost = scan.nextDouble();
+        acquisitionCost = scan.nextInt();
         System.out.print("Residual Value -> ");
         residualValue = scan.nextDouble();
         System.out.print("Years -> ");
@@ -36,12 +36,32 @@ public class Main {
         }
 
     }
+    private static void sumOfDigits() {
+        System.out.println("Sum of the digits");
+        System.out.print("Acquisition Cost -> ");
+        acquisitionCost = scan.nextInt();
+        System.out.print("Residual Value -> ");
+        residualValue = scan.nextDouble();
+        System.out.print("Years -> ");
+        years = scan.nextInt();
+
+        int sum = 0;
+
+        for (int i = 0; i <= years; i++){
+            sum += i;
+        }
+        System.out.println("Sum of digits: " + sum);
+
+        int storeAcq = acquisitionCost;
+        for (double j = years; j >= 1; j--){
+            int depForYear = (int) ((j / sum) * (storeAcq - residualValue));
+            acquisitionCost -= depForYear;
+            System.out.println(acquisitionCost);
+        }
+
+    }
 
     private static void reducingBalance() {
         System.out.println("Reducing Balance");
-    }
-
-    private static void sumOfDigits() {
-        System.out.println("Sum of the digits");
     }
 }
